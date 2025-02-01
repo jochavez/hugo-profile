@@ -80,7 +80,7 @@
     max-width: 100%;
     display: block;
     overflow-x: auto;
-    opacity: 0.8;
+    {{/* opacity: 0.8; */}}
 }
 
 #single .page-content table > tr {
