@@ -18,6 +18,7 @@
 - Fully Responsive
 - Minimalist Design
 - SEO Friendly
+- Internationalization (i18n) Support
 - [Light/Dark/Auto Theme Color Configuration](https://github.com/gurusabarish/hugo-profile/wiki/Color-Customization)
 - Categories and Tags Support
 - Analytics Support ([Google Analytics](https://gohugo.io/templates/internal/#google-analytics))
@@ -109,6 +110,80 @@ Here are some useful resources for your reference:
 * [Hugo Content Organization – Giraffe Academy](https://www.mikedane.com/static-site-generators/hugo/content-organization/)
 
 * [Wiki Page](https://github.com/gurusabarish/hugo-profile/wiki) – Tips specific to this theme.
+
+
+## Internationalization (i18n)
+
+This theme supports multiple languages out of the box. Hugo Profile includes built-in translations for English, Spanish, and French, and you can easily add your own languages.
+
+### Setting Up Multiple Languages
+
+To enable multilingual support, add the following to your `hugo.yaml`:
+
+```yaml
+defaultContentLanguage: "en"
+defaultContentLanguageInSubdir: false
+
+languages:
+  en:
+    languageName: "English"
+    weight: 1
+  es:
+    languageName: "Español"
+    weight: 2
+  fr:
+    languageName: "Français"
+    weight: 3
+```
+
+### How It Works
+
+1. **Translation Files**: The theme includes translation files in the `i18n/` directory:
+   - `en.toml` - English translations
+   - `es.toml` - Spanish translations
+   - `fr.toml` - French translations
+
+2. **Language Switcher**: When you enable multiple languages, a language switcher dropdown automatically appears in the navigation bar, allowing visitors to switch between languages.
+
+3. **Backward Compatibility**: All existing sites continue to work without any changes. The theme automatically falls back to English or your configured language if no multilingual setup is provided.
+
+### Adding a New Language
+
+To add support for a new language (e.g., German):
+
+1. Create a new translation file `i18n/de.toml` in your site root or in the theme:
+   ```toml
+   [nav_about]
+   other = "Über uns"
+   
+   [nav_experience]
+   other = "Erfahrung"
+   
+   # Add all other translations...
+   ```
+
+2. Add the language to your `hugo.yaml`:
+   ```yaml
+   languages:
+     de:
+       languageName: "Deutsch"
+       weight: 4
+   ```
+
+3. (Optional) Create language-specific content in `content/de/` directory.
+
+### Customizing Translations
+
+You can override any translation by adding it to your site's `params.terms` section in `hugo.yaml`:
+
+```yaml
+params:
+  terms:
+    read: "Custom Read Text"
+    pageNotFound: "Custom 404 Message"
+```
+
+For more information about Hugo's multilingual features, see the [Hugo Multilingual Documentation](https://gohugo.io/content-management/multilingual/).
 
 
 ## Deployment

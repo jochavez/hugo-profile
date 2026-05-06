@@ -57,7 +57,11 @@
 {{- end }}
 
 {{ if not (.Site.Params.navbar.disableSearch | default false) }}
-    <script src="{{ .Site.Params.staticPath }}/js/search.js"></script>
+    <script>
+      // Set the correct path to index.json for the search functionality
+      window.searchIndexURL = {{ .Site.Home.RelPermalink | printf "%sindex.json" | jsonify | safeJS }};
+    </script>
+    <script src="{{ (printf "%sjs/search.js" (.Site.Params.staticPath | default "")) | relURL }}"></script>
 {{ end }}
 
 
@@ -93,7 +97,7 @@
 {{ end }}
 
 {{ if (.Site.Params.contact.formspree.enable | default false) }}
-<script src="{{ .Site.Params.staticPath }}/js/contact.js"></script>
+<script src="{{ (printf "%sjs/contact.js" (.Site.Params.staticPath | default "")) | relURL }}"></script>
 {{ end }}
 
 {{ if (.Site.Params.customScripts | default false) }}
